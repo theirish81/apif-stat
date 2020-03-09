@@ -1,0 +1,95 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border: 1px #010101 solid;
+            border-collapse: collapse;
+        }
+        td,th {
+            text-align:left;
+            border: 1px #010101 solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project: {{name}}</h1>
+    <h2>Time range</h2>
+    <p>
+        {{start}} - {{end}}
+    </p>
+
+    <h2>Events</h2>
+    <p>
+        <ul>
+            <li>Successes: {{events.successes}}</li>
+            <li>Failures: {{events.failures}}</li>
+            <li>Criticals: {{events.criticals}}</li>
+        </ul>
+    </p>
+    <h3>Tags</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Tag</th><th>Successes</th><th>Failures</th><th>Criticals</th>
+            </tr>
+        <thead>
+        <tbody>
+        {{#events.tags}}
+            <tr>
+                <td>
+                    {{@key}}
+                </td>
+                <td>
+                    {{@val.successes}}
+                </td>
+                <td>
+                    {{@val.failures}}
+                </td>
+                <td>
+                    {{@val.criticals}}
+                </td>
+            </tr>
+        {{/events.tags}}
+        </tbody>
+    </table>
+
+    <h2>Metrics</h2>
+    <p>
+        <ul>
+            <li>Successes: {{metrics.successes}}</li>
+            <li>Failures: {{metrics.failures}}</li>
+            <li>Criticals: {{metrics.criticals}}</li>
+            <li>Avg latency: {{#toFixed}}{{metrics.latency}}{{/toFixed}}</li>
+            <li>Avg fetch: {{#toFixed}}{{metrics.fetch}}{{/toFixed}}</li>
+        </ul>
+    </p>
+    <h3>Footprints</h3>
+     <table>
+        <thead>
+            <tr>
+                <th>Footprint</th><th>Successes</th><th>Failures</th><th>Criticals</th><th>Avg Latency</th><th>Avg Fetch</th>
+            </tr>
+        <thead>
+        <tbody>
+            {{#metrics.footprints}}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td>{{@val.successes}}</td>
+                    <td>{{@val.failures}}</td>
+                    <td>{{@val.criticals}}</td>
+                    <td>{{#toFixed}}{{@val.latency}}{{/toFixed}}</td>
+                    <td>{{#toFixed}}{{@val.fetch}}{{/toFixed}}</td>
+                </tr>
+            {{/metrics.footprints}}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
