@@ -2,7 +2,7 @@
 
 A sample stat generator for API Fortress.
 
-Given an API Fortress API-Hook and a time range, this program will generate aggregated statistics for it.
+Given an [API Fortress](https://apifortress.com) API-Hook and a time range, this program will generate aggregated statistics for it.
 
 Example:
 
